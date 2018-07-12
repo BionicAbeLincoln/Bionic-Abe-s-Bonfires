@@ -1,0 +1,38 @@
+class CfgFunctions
+{
+	#include "BALBF\Functions.h"
+};
+
+class CfgSounds
+{
+	sounds[] = {};
+
+	class BALTeleportLanding
+	{
+		name = "BAL Teleport Landing";
+		sound[] = {"\sfx\DSFogDoor.ogg", 0.45, 1};
+		titles[] = {0, ""};
+	};
+
+	class DSBonfireSit
+	{
+		name = "DS Bonfire Sit";
+		sound[] = {"\sfx\DSBonfireSit.ogg", 1, 1};
+		titles[] = {0, ""};
+	};
+
+	class DSBonfireLit
+	{
+		name = "DS Bonfire Lit";
+		sound[] = {"\sfx\DSAreaTransition.ogg", 1.2, 1};
+		titles[] = {0, ""};
+	};
+
+	class DSKindle
+	{
+		name = "DS Kindle";
+		sound[] = {"\sfx\DSKindle.ogg", 1, 1};
+		titles[] = {0, ""};
+	};
+
+};

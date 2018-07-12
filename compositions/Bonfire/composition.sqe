@@ -1,0 +1,108 @@
+version=52;
+center[]={3908.0273,50.245121,12294.542};
+class items
+{
+	items=2;
+	class Item0
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={0.11157227,0.84963226,0.040039063};
+			angles[]={4.8499556,1.9184943,6.1617522};
+		};
+		side="Empty";
+		class Attributes
+		{
+			health=0;
+			ammo=0;
+			init="removeAllActions this;";
+		};
+		id=1167;
+		type="Weapon_srifle_LRR_F";
+		atlOffset=0.42753983;
+		class CustomAttributes
+		{
+			class Attribute0
+			{
+				property="allowDamage";
+				expression="_this allowdamage _value;";
+				class Value
+				{
+					class data
+					{
+						class type
+						{
+							type[]=
+							{
+								"BOOL"
+							};
+						};
+						value=0;
+					};
+				};
+			};
+			class Attribute1
+			{
+				property="enableSimulation";
+				expression="if !(is3DEN) then {_this enablesimulationglobal _value;};";
+				class Value
+				{
+					class data
+					{
+						class type
+						{
+							type[]=
+							{
+								"BOOL"
+							};
+						};
+						value=0;
+					};
+				};
+			};
+			nAttributes=2;
+		};
+	};
+	class Item1
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={-0.11645508,0.21679306,-0.020507813};
+			angles[]={0.089099057,0,0.023998277};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+			init="[this, ""unnamed"", false] call BALBF_fnc_bonfireSetup";
+		};
+		id=1168;
+		type="Land_Campfire_F";
+		atlOffset=-0.01599884;
+		class CustomAttributes
+		{
+			class Attribute0
+			{
+				property="allowDamage";
+				expression="_this allowdamage _value;";
+				class Value
+				{
+					class data
+					{
+						class type
+						{
+							type[]=
+							{
+								"BOOL"
+							};
+						};
+						value=0;
+					};
+				};
+			};
+			nAttributes=1;
+		};
+	};
+};
