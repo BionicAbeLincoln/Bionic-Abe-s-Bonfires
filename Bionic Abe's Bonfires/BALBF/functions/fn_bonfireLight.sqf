@@ -57,7 +57,7 @@ try
 				};
 				sleep 0.5;
 				(_this select 0) inflame true;
-				playSound3D [MISSION_ROOT + "sfx\DSKindle.ogg", _this select 0];
+				playSound3D [BALBF_MISSION_ROOT + "sfx\DSKindle.ogg", _this select 0];
 				sleep 0.4;
 				if (BALBF_CFG_BroadcastSoundOnLight) then { remoteExec ["BALBF_fnc_bonfireLitSound", [0, -2] select isDedicated]; };
 				if (BALBF_CFG_BroadcastMessageOnLight) then { _this remoteExec ["BALBF_fnc_bonfireLitMessage"]; };

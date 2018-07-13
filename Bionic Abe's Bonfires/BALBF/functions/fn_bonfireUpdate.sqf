@@ -35,8 +35,13 @@
 			} foreach _bonfireNames;
 		};
 
-		// Get a selection of all living players on this player's side, excluding this player,
-		private _warpPlayers = allPlayers - [player];
+
+		// Create the array that holds the list of players it can warp to, and filter by side
+		private _warpPlayers = [];
+		{
+			if(side _x == side player)
+				then { _warpPlayers append [_x] ; };
+		} foreach allPlayers - [player];
 
 		private _st = "<t color='" + BALBF_ACTION_COLOR + "'>";
 		private _sta = "<t color='" + BALBF_ACTION_ARSENAL_COLOR + "'>";
@@ -98,24 +103,34 @@
 			// add bonfire warps
 			if ((BALBF_CFG_AllowTeleportingToBonfires) && (count _litBonfires ) > 1) then
 			{
-				_warpBonfires = +_litBonfires;
-				_warpBonfires deleteAt (_warpBonfires find _bf);
+				if(
+					(side player == WEST && BALBF_CFG_AllowTeleportingToBonfiresBlufor)
+					||
+					(side player == EAST && BALBF_CFG_AllowTeleportingToBonfiresOpfor)
+					||
+					(side player == resistance && BALBF_CFG_AllowTeleportingToBonfiresIndfor)
+					||
+					(side player == civilian && BALBF_CFG_AllowTeleportingToBonfiresCiv)
+				) then {
+					_warpBonfires = +_litBonfires;
+					_warpBonfires deleteAt (_warpBonfires find _bf);
 
-				{
-					_bf addAction [format [_st + "Warp to %1" + _et, _x getVariable "BALBF_Name"], {
-						_unit = _this select 1;
-						_dest = _this select 3;
-						[_unit, _dest, 3] call BALBF_fnc_bonfireTeleport;
-					}, _x, _priorityCounter, false, true, "", "true", 5];
+					{
+						_bf addAction [format [_st + "Warp to %1" + _et, _x getVariable "BALBF_Name"], {
+							_unit = _this select 1;
+							_dest = _this select 3;
+							[_unit, _dest, 3] call BALBF_fnc_bonfireTeleport;
+						}, _x, _priorityCounter, false, true, "", "true", 5];
 
-					_g addAction [format [_st + "Warp to %1" + _et, _x getVariable "BALBF_Name"], {
-						_unit = _this select 1;
-						_dest = _this select 3;
-						[_unit, _dest, 3] call BALBF_fnc_bonfireTeleport;
-					}, _x, _priorityCounter, false, true, "", "true", 5];
+						_g addAction [format [_st + "Warp to %1" + _et, _x getVariable "BALBF_Name"], {
+							_unit = _this select 1;
+							_dest = _this select 3;
+							[_unit, _dest, 3] call BALBF_fnc_bonfireTeleport;
+						}, _x, _priorityCounter, false, true, "", "true", 5];
 
-					_priorityCounter = _priorityCounter - 1;
-				} foreach _warpBonfires;
+						_priorityCounter = _priorityCounter - 1;
+					} foreach _warpBonfires;
+				}
 			};
 
 		} foreach _litBonfires;

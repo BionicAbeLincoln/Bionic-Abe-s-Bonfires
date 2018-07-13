@@ -8,7 +8,6 @@ class BALBF
 
 		class bonfireSystemPreInit {preInit = 1;};
 		class bonfireSystemPostInit {postInit = 1;};
-		class quickFunctions {};
 		class bonfireSetup {};
 		class bonfireLight {};
 		class bonfireLitSound {};

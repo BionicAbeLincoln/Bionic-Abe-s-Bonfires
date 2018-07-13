@@ -6,8 +6,6 @@
 	Args: none
  */
 
- [] call BALBF_fnc_quickFunctions;
-
 /*---------------------------------------------------------------------------
 	Config Variables:  Edit for mission customization
 ---------------------------------------------------------------------------*/
@@ -17,6 +15,12 @@
 BALBF_CFG_AllowTeleportingToBonfires = true;
 // When false, players cannot teleport from a bonfire to any other player.
 BALBF_CFG_AllowTeleportingToPlayers = true;
+
+// **Teleporting per side**
+BALBF_CFG_AllowTeleportingToBonfiresBlufor = true;
+BALBF_CFG_AllowTeleportingToBonfiresOpfor = true;
+BALBF_CFG_AllowTeleportingToBonfiresIndfor = true;
+BALBF_CFG_AllowTeleportingToBonfiresCiv = true;
 
 // ** Equipment **
 // When false, the virtual arsenal cannot be accessed from any bonfire.
@@ -38,7 +42,6 @@ BALBF_CFG_DisplayBonfiresOnMap = 2;
 BALBF_CFG_BonfireMapSymbol = "mil_start";
 // Sets the color of unlit bonfires on the map using values from Arma 3's CfgMarkerColors.  (Default is "ColorBlack")
 BALBF_CFG_BonfireMapColorDark = "ColorBlack";
-// Sets the color of unlit bonfires on the map using values from Arma 3's CfgMarkerColors.
 // It's recommended to use a faction color here, such as "colorBLUFOR", "colorOPFOR", or "colorIndependent"
 BALBF_CFG_BonfireMapColorLit = "colorBLUFOR";
 
@@ -58,7 +61,12 @@ if (isDedicated || isServer) then
 {
 	missionNamespace setVariable ["BALBF_AllBonfires", [], true];
 	missionNamespace setVariable ["BALBF_LitBonfires", [], true];
-	missionNamespace setVariable ["BALBF_CanWarpToSquadmates", BALBF_CFG_AllowTeleportingToPlayers, true];
-
+	missionNamespace setVariable ["BALBF_CanWarpToSquadmates", true, true];
+	// BALBF_AllBonfires = [];
+	// BALBF_LitBonfires = [];
+	// BALBF_CanWarpToSquadmates = true;
+	// publicVariable "BALBF_AllBonfires";
+	// publicVariable "BALBF_LitBonfires";
+	// publicVariable "BALBF_CanWarpToSquadmates";
 }
 
